@@ -680,20 +680,741 @@ function showToast(message) {
 
 }
 /* =====================================================
-   EXPLORE NAGPUR
+   EXPLORE NAGPUR — MASTER DATABASE
 ===================================================== */
 
-const exploreSearch =
-    document.getElementById("exploreSearch");
+const nagpurPlaces = [
 
-const areaFilter =
-    document.getElementById("areaFilter");
+    /* ================= CAFÉS ================= */
 
-const filterButtons =
-    document.querySelectorAll(".filter-btn");
+    {
+        id: "bella-brew",
+        name: "Bella Brew",
+        category: "cafe",
+        area: "dharampeth",
+        location: "Dharampeth",
+        rating: 4.5,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Coffee, conversations and a relaxed city hangout.",
+        goodFor: "Coffee · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80"
+    },
 
-const placeCards =
-    document.querySelectorAll(".place-card");
+    {
+        id: "bonte",
+        name: "Bonte",
+        category: "cafe",
+        area: "dharampeth",
+        location: "Dharampeth",
+        rating: 4.5,
+        price: "₹₹",
+        badge: "SPECIALITY",
+        description: "A contemporary café stop for coffee and conversations.",
+        goodFor: "Coffee · Dates · Friends",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "nothing-before-coffee-dharampeth",
+        name: "Nothing Before Coffee",
+        category: "cafe",
+        area: "dharampeth",
+        location: "Dharampeth",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "A casual coffee stop for quick breaks and meetups.",
+        goodFor: "Coffee · Quick Stop · Friends",
+        image: "https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "bouffage",
+        name: "Bouffage",
+        category: "cafe",
+        area: "dharampeth",
+        location: "Dharampeth",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "A food and café destination in one of Nagpur's popular areas.",
+        goodFor: "Food · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "three-beans-dharampeth",
+        name: "Three Beans Coffee Bar",
+        category: "cafe",
+        area: "dharampeth",
+        location: "Dharampeth",
+        rating: 4.5,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Coffee-focused hangout for relaxed city evenings.",
+        goodFor: "Coffee · Work · Friends",
+        image: "https://images.unsplash.com/photo-1493857671505-72967e2e2760?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "corridor-seven-dharampeth",
+        name: "Corridor Seven Coffee Roastery",
+        category: "cafe",
+        area: "dharampeth",
+        location: "Dharampeth",
+        rating: 4.6,
+        price: "₹₹",
+        badge: "ROASTERY",
+        description: "Speciality coffee destination built around serious coffee culture.",
+        goodFor: "Coffee · Work · Coffee Lovers",
+        image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "all-thats-coffee-dharampeth",
+        name: "All That's Coffee",
+        category: "cafe",
+        area: "dharampeth",
+        location: "Dharampeth",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual coffee and café stop in Dharampeth.",
+        goodFor: "Coffee · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "godwit-cafe",
+        name: "Godwit Cafe",
+        category: "cafe",
+        area: "civil-lines",
+        location: "Civil Lines",
+        rating: 4.5,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Coffee, bakery and beverages in Civil Lines.",
+        goodFor: "Coffee · Bakery · Friends",
+        image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c5?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "kaafeela",
+        name: "Kaafeela Speciality Coffee",
+        category: "cafe",
+        area: "civil-lines",
+        location: "Civil Lines",
+        rating: 4.5,
+        price: "₹₹",
+        badge: "SPECIALITY",
+        description: "Speciality coffee and a modern café atmosphere.",
+        goodFor: "Coffee · Dates · Work",
+        image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "pablo-art-cafe",
+        name: "Pablo — The Art Cafe",
+        category: "cafe",
+        area: "civil-lines",
+        location: "Civil Lines",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "ART CAFÉ",
+        description: "Café and art-inspired hangout.",
+        goodFor: "Art · Coffee · Dates",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "or-coffee",
+        name: "OR Coffee",
+        category: "cafe",
+        area: "sadar",
+        location: "Sadar",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "A coffee stop in the heart of Sadar.",
+        goodFor: "Coffee · Friends · Quick Stop",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "indian-coffee-house-sadar",
+        name: "Indian Coffee House",
+        category: "cafe",
+        area: "sadar",
+        location: "Sadar",
+        rating: 4.2,
+        price: "₹",
+        badge: "CLASSIC",
+        description: "A classic coffee-house experience in Nagpur.",
+        goodFor: "Budget · Coffee · Conversations",
+        image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "all-thats-coffee-sadar",
+        name: "All That's Coffee — Sadar",
+        category: "cafe",
+        area: "sadar",
+        location: "Sadar",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Coffee and café favourites in Sadar.",
+        goodFor: "Coffee · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "sippins",
+        name: "Sippins Cafe",
+        category: "cafe",
+        area: "sadar",
+        location: "Sadar",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café for drinks, snacks and meetups.",
+        goodFor: "Friends · Snacks · Chill",
+        image: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "corridor-seven-sitabuldi",
+        name: "Corridor Seven Coffee Roasters",
+        category: "cafe",
+        area: "sitabuldi",
+        location: "Sitabuldi",
+        rating: 4.6,
+        price: "₹₹",
+        badge: "ROASTERY",
+        description: "Speciality coffee in the centre of Nagpur.",
+        goodFor: "Coffee · Work · Coffee Lovers",
+        image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "mahachai",
+        name: "Mahachai",
+        category: "cafe",
+        area: "sitabuldi",
+        location: "Sitabuldi",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Tea and café-style refreshments in Sitabuldi.",
+        goodFor: "Tea · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "baba-coffee",
+        name: "Baba Coffee",
+        category: "cafe",
+        area: "sitabuldi",
+        location: "Sitabuldi",
+        rating: 4.2,
+        price: "₹",
+        badge: "COFFEE",
+        description: "A casual coffee stop around Sitabuldi.",
+        goodFor: "Budget · Coffee · Quick Stop",
+        image: "https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "cafe-seven-eleven",
+        name: "Cafe Seven O' Eleven",
+        category: "cafe",
+        area: "bajaj-nagar",
+        location: "Bajaj Nagar",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Popular café destination around Bajaj Nagar.",
+        goodFor: "Friends · Coffee · Food",
+        image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "villa-167",
+        name: "Villa 167",
+        category: "cafe",
+        area: "bajaj-nagar",
+        location: "Bajaj Nagar",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "A contemporary food and café destination.",
+        goodFor: "Food · Friends · Dates",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "brewin-cafe",
+        name: "Brewin Cafe",
+        category: "cafe",
+        area: "bajaj-nagar",
+        location: "Bajaj Nagar",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Coffee, food and casual hangouts.",
+        goodFor: "Coffee · Food · Friends",
+        image: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "brew-crew",
+        name: "The Brew Crew",
+        category: "cafe",
+        area: "bajaj-nagar",
+        location: "Bajaj Nagar",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "BREW",
+        description: "Coffee-focused café for everyday hangouts.",
+        goodFor: "Coffee · Friends · Work",
+        image: "https://images.unsplash.com/photo-1493857671505-72967e2e2760?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "hideout",
+        name: "HIDEOUT The Street Cafe",
+        category: "cafe",
+        area: "bajaj-nagar",
+        location: "Bajaj Nagar",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "HANGOUT",
+        description: "Casual street-style café hangout.",
+        goodFor: "Friends · Snacks · Chill",
+        image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "wild-cup",
+        name: "Wild Cup Coffee Roasters",
+        category: "cafe",
+        area: "wardhaman-nagar",
+        location: "Wardhaman Nagar",
+        rating: 4.5,
+        price: "₹₹",
+        badge: "ROASTERY",
+        description: "Coffee roastery and café experience.",
+        goodFor: "Coffee · Work · Coffee Lovers",
+        image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "cafetreea",
+        name: "Cafetreea By Naivedhyam",
+        category: "cafe",
+        area: "laxmi-nagar",
+        location: "Laxmi Nagar",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Café and food destination in Laxmi Nagar.",
+        goodFor: "Food · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c5?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "paloma",
+        name: "Paloma Coffee Co.",
+        category: "cafe",
+        area: "ramdaspeth",
+        location: "Ramdaspeth",
+        rating: 4.5,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Modern coffee destination in Ramdaspeth.",
+        goodFor: "Coffee · Dates · Work",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "brim-ramdaspeth",
+        name: "BRIM Coffee",
+        category: "cafe",
+        area: "ramdaspeth",
+        location: "Ramdaspeth",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Speciality-style coffee and café atmosphere.",
+        goodFor: "Coffee · Work · Chill",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "tan-coffee",
+        name: "Tan Coffee",
+        category: "cafe",
+        area: "ambazari",
+        location: "Shivaji Nagar / Ambazari Road",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Coffee destination around the Ambazari side of Nagpur.",
+        goodFor: "Coffee · Friends · Work",
+        image: "https://images.unsplash.com/photo-1493857671505-72967e2e2760?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "brewed-leaf",
+        name: "The Brewed Leaf Coffee Roasters",
+        category: "cafe",
+        area: "gokulpeth",
+        location: "Gokulpeth",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "ROASTERY",
+        description: "Coffee roasters and café experience in Gokulpeth.",
+        goodFor: "Coffee · Work · Coffee Lovers",
+        image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "huboho",
+        name: "Huboho Cafe & Eatery",
+        category: "cafe",
+        area: "gokulpeth",
+        location: "Gokulpeth",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "EATERY",
+        description: "Café and eatery for casual city hangouts.",
+        goodFor: "Food · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "snoopers",
+        name: "Snoopers Co.",
+        category: "cafe",
+        area: "pratap-nagar",
+        location: "Pratap Nagar",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "SPECIALITY",
+        description: "Speciality brewing coffee shop in Pratap Nagar.",
+        goodFor: "Coffee · Work · Chill",
+        image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "coffee-script",
+        name: "Coffee Script",
+        category: "cafe",
+        area: "pratap-nagar",
+        location: "Pratap Nagar",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Coffee and café favourites around Pratap Nagar.",
+        goodFor: "Coffee · Friends · Work",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "brim-trimurti",
+        name: "BRIM Coffee",
+        category: "cafe",
+        area: "trimurti-nagar",
+        location: "Trimurti Nagar",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Modern coffee stop in Trimurti Nagar.",
+        goodFor: "Coffee · Friends · Work",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "parera-coffee",
+        name: "Parera Coffee",
+        category: "cafe",
+        area: "manish-nagar",
+        location: "Manish Nagar",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Coffee and casual café experience.",
+        goodFor: "Coffee · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "midnight-brew",
+        name: "Midnight Brew Cafe",
+        category: "cafe",
+        area: "manish-nagar",
+        location: "Manish Nagar",
+        rating: 4.2,
+        price: "₹₹",
+        badge: "LATE NIGHT",
+        description: "A café option for later-evening hangouts.",
+        goodFor: "Late Night · Friends · Food",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "flow-nagpur",
+        name: "Flow.nagpur",
+        category: "cafe",
+        area: "manish-nagar",
+        location: "Manish Nagar",
+        rating: 4.3,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Contemporary café and hangout.",
+        goodFor: "Friends · Food · Chill",
+        image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "cafe-republic",
+        name: "Cafe Republic",
+        category: "cafe",
+        area: "wardha-road",
+        location: "Wardha Road",
+        rating: 4.2,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café and food destination on Wardha Road.",
+        goodFor: "Food · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "cream-fusion",
+        name: "Creamy Fusion Cafe",
+        category: "cafe",
+        area: "wardha-road",
+        location: "Wardha Road",
+        rating: 4.2,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café for desserts, drinks and food.",
+        goodFor: "Dessert · Friends · Dates",
+        image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "bon-patisserie",
+        name: "Bon Patisserie",
+        category: "cafe",
+        area: "khamla",
+        location: "Khamla",
+        rating: 4.4,
+        price: "₹₹",
+        badge: "PATISSERIE",
+        description: "Bakery and café-style destination around Khamla.",
+        goodFor: "Dessert · Coffee · Dates",
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "paris-hes",
+        name: "Parishe's Café",
+        category: "cafe",
+        area: "besa",
+        location: "Besa",
+        rating: 4.2,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Café and casual hangout in Besa.",
+        goodFor: "Friends · Food · Chill",
+        image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c5?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "cafe-b",
+        name: "Cafe'b",
+        category: "cafe",
+        area: "besa",
+        location: "Besa",
+        rating: 4.2,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café destination around Besa.",
+        goodFor: "Food · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "lake-view-cafe",
+        name: "Lake View Cafe",
+        category: "cafe",
+        area: "ayodhya-nagar",
+        location: "Ayodhya Nagar",
+        rating: 4.1,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café option around Ayodhya Nagar.",
+        goodFor: "Friends · Chill · Food",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "cafe-4060",
+        name: "Cafe 40/60",
+        category: "cafe",
+        area: "sakkardara",
+        location: "Sakkardara",
+        rating: 4.1,
+        price: "₹",
+        badge: "CAFÉ",
+        description: "Budget-friendly café option around Sakkardara.",
+        goodFor: "Budget · Friends · Snacks",
+        image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "farmaaish",
+        name: "Farmaaish Cafe",
+        category: "cafe",
+        area: "itwari",
+        location: "Itwari",
+        rating: 4.1,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Café option in the historic Itwari side of Nagpur.",
+        goodFor: "Food · Friends · Explore",
+        image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "solterra",
+        name: "Solterra Cafe",
+        category: "cafe",
+        area: "mahal",
+        location: "Mahal",
+        rating: 4.1,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Café and hangout in old Nagpur.",
+        goodFor: "Friends · Food · Explore",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "temptation-cafe",
+        name: "Temptation Cafe",
+        category: "cafe",
+        area: "nandanvan",
+        location: "Nandanvan",
+        rating: 4.1,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café and food stop in Nandanvan.",
+        goodFor: "Food · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "cafe-obliss",
+        name: "CAFE O'BLISS",
+        category: "cafe",
+        area: "nandanvan",
+        location: "Nandanvan",
+        rating: 4.1,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café destination in Nandanvan.",
+        goodFor: "Friends · Food · Chill",
+        image: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "caelio",
+        name: "Caelio",
+        category: "cafe",
+        area: "nandanvan",
+        location: "Nandanvan",
+        rating: 4.2,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Contemporary café and food destination.",
+        goodFor: "Food · Friends · Dates",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "rooh-roast",
+        name: "Rooh & Roast Coffee House",
+        category: "cafe",
+        area: "hingna",
+        location: "Hingna / Wanadongri",
+        rating: 4.2,
+        price: "₹₹",
+        badge: "COFFEE",
+        description: "Coffee house around the Hingna side of Nagpur.",
+        goodFor: "Coffee · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "kbc-cafe",
+        name: "KBC Cafe",
+        category: "cafe",
+        area: "hingna",
+        location: "Hingna",
+        rating: 4.0,
+        price: "₹₹",
+        badge: "CAFÉ",
+        description: "Casual café and food stop around Hingna.",
+        goodFor: "Food · Friends · Chill",
+        image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c5?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "its-street-coffee",
+        name: "It's Street Coffee",
+        category: "cafe",
+        area: "bajaj-nagar",
+        location: "Bajaj Nagar",
+        rating: 4.1,
+        price: "₹",
+        badge: "COFFEE",
+        description: "Casual street-style coffee stop.",
+        goodFor: "Budget · Coffee · Quick Stop",
+        image: "https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=1000&q=80"
+    },
+
+    {
+        id: "coffee-house-dhantoli",
+        name: "Coffee House",
+        category: "cafe",
+        area: "dhantoli",
+        location: "Dhantoli",
+        rating: 4.0,
+        price: "₹",
+        badge: "COFFEE",
+        description: "Coffee and casual refreshments around Dhantoli.",
+        goodFor: "Budget · Coffee · Friends",
+        image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=80"
+    }
+
+];
+
+
+/* =====================================================
+   EXPLORE STATE
+===================================================== */
+
+let currentCategory = "all";
+let currentArea = "all";
+let currentSearch = "";
+let sortDescending = true;
+
+const placesGrid =
+    document.getElementById("placesGrid");
 
 const resultCount =
     document.getElementById("resultCount");
@@ -702,120 +1423,308 @@ const placesEmpty =
     document.getElementById("placesEmpty");
 
 
-let currentCategory = "all";
-let currentArea = "all";
+/* =====================================================
+   RENDER PLACE CARDS
+===================================================== */
 
+function renderPlaces() {
 
-/* ================= FILTER PLACES ================= */
-
-function filterPlaces() {
+    if (!placesGrid) return;
 
     const search =
-        exploreSearch.value
-            .trim()
-            .toLowerCase();
+        currentSearch.trim().toLowerCase();
+
+    let results =
+        nagpurPlaces.filter(place => {
+
+            const categoryMatch =
+                currentCategory === "all" ||
+                place.category === currentCategory;
+
+            const areaMatch =
+                currentArea === "all" ||
+                place.area === currentArea;
+
+            const searchMatch =
+                !search ||
+                place.name.toLowerCase().includes(search) ||
+                place.location.toLowerCase().includes(search) ||
+                place.category.toLowerCase().includes(search);
+
+            return (
+                categoryMatch &&
+                areaMatch &&
+                searchMatch
+            );
+
+        });
 
 
-    let visibleCount = 0;
-
-
-    placeCards.forEach(card => {
-
-        const category =
-            card.dataset.category;
-
-        const area =
-            card.dataset.area;
-
-        const name =
-            card.dataset.name.toLowerCase();
-
-
-        const categoryMatch =
-            currentCategory === "all" ||
-            category === currentCategory;
-
-
-        const areaMatch =
-            currentArea === "all" ||
-            area === currentArea;
-
-
-        const searchMatch =
-            !search ||
-            name.includes(search) ||
-            category.includes(search) ||
-            area.includes(search);
-
-
-        if (
-            categoryMatch &&
-            areaMatch &&
-            searchMatch
-        ) {
-
-            card.classList.remove("hidden");
-
-            visibleCount++;
-
-        } else {
-
-            card.classList.add("hidden");
-
-        }
-
-    });
+    results.sort((a, b) =>
+        sortDescending
+            ? b.rating - a.rating
+            : a.rating - b.rating
+    );
 
 
     resultCount.textContent =
-        visibleCount;
+        results.length;
 
 
-    if (visibleCount === 0) {
+    placesGrid.innerHTML =
+        results.map((place, index) => `
 
-        placesEmpty.classList.add("show");
+            <article
+                class="place-card"
+                data-category="${place.category}"
+                data-area="${place.area}"
+                data-name="${place.name}"
+                data-rating="${place.rating}"
+            >
 
-    } else {
+                <div
+                    class="place-image"
+                    style="
+                        background-image:
+                        url('${place.image}');
+                    "
+                >
 
-        placesEmpty.classList.remove("show");
+                    <span class="place-badge">
+                        ${place.badge}
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="
+                            savePlace(
+                                this,
+                                event,
+                                '${place.name.replace(/'/g, "\\'")}'
+                            )
+                        "
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        ${String(index + 1).padStart(2, "0")}
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            ${place.category.toUpperCase()}
+                        </small>
+
+                        <h3>
+                            ${place.name}
+                        </h3>
+
+                        <p>
+                            ${place.location}
+                            · ${place.price}
+                            · ⭐ ${place.rating}
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="
+                            openPlace(
+                                '${place.name.replace(/'/g, "\\'")}'
+                            )
+                        "
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+        `).join("");
+
+
+    if (placesEmpty) {
+
+        placesEmpty.classList.toggle(
+            "show",
+            results.length === 0
+        );
 
     }
 
 }
 
 
-/* ================= CATEGORY BUTTONS ================= */
+/* =====================================================
+   SEARCH
+===================================================== */
 
-filterButtons.forEach(button => {
+if (exploreSearch) {
 
-    button.addEventListener(
-        "click",
+    exploreSearch.addEventListener(
+        "input",
         () => {
 
-            filterButtons.forEach(
-                item => {
+            currentSearch =
+                exploreSearch.value;
 
-                    item.classList.remove(
-                        "active"
-                    );
-
-                }
-            );
-
-
-            button.classList.add("active");
-
-
-            currentCategory =
-                button.dataset.category;
-
-
-            filterPlaces();
+            renderPlaces();
 
         }
     );
 
-});
+}
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+document
+    .querySelectorAll(".filter-btn")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .querySelectorAll(".filter-btn")
+                    .forEach(btn =>
+                        btn.classList.remove("active")
+                    );
+
+                button.classList.add("active");
+
+                currentCategory =
+                    button.dataset.category;
+
+                renderPlaces();
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   AREA FILTER
+===================================================== */
+
+if (areaFilter) {
+
+    areaFilter.addEventListener(
+        "change",
+        () => {
+
+            currentArea =
+                areaFilter.value;
+
+            renderPlaces();
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SORT
+===================================================== */
+
+if (sortBtn) {
+
+    sortBtn.addEventListener(
+        "click",
+        () => {
+
+            sortDescending =
+                !sortDescending;
+
+            sortBtn.innerHTML =
+                sortDescending
+                    ? "Top rated ↕"
+                    : "Lowest rated ↕";
+
+            renderPlaces();
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetExplore() {
+
+    currentCategory = "all";
+    currentArea = "all";
+    currentSearch = "";
+    sortDescending = true;
+
+
+    if (exploreSearch) {
+        exploreSearch.value = "";
+    }
+
+
+    if (areaFilter) {
+        areaFilter.value = "all";
+    }
+
+
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(button =>
+            button.classList.remove("active")
+        );
+
+
+    const allButton =
+        document.querySelector(
+            '.filter-btn[data-category="all"]'
+        );
+
+
+    if (allButton) {
+        allButton.classList.add("active");
+    }
+
+
+    if (sortBtn) {
+        sortBtn.innerHTML =
+            "Top rated ↕";
+    }
+
+
+    renderPlaces();
+
+}
+
+
+/* =====================================================
+   INITIAL RENDER
+===================================================== */
+
+renderPlaces();
+
+        
+    
+
+
 
 
 /* ================= SEARCH ================= */
