@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Nagpur Now — discover places, experiences, events and hidden gems around Nagpur."
+    >
+
+    <title>Nagpur Now — Your City. Your Vibe.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ================= LOADER ================= -->
+
+    <div class="loader" id="loader">
+
+        <div class="loader-content">
+
+            <div class="loader-logo">
+                NAGPUR<span>NOW</span>
+            </div>
+
+            <div class="loader-progress">
+                <span></span>
+            </div>
+
+            <p>LOADING YOUR CITY...</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CURSOR ================= -->
+
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="header" id="header">
+
+        <nav class="navbar">
+
+            <a href="#" class="logo">
+                NAGPUR<span>NOW</span>
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="#explore">Explore</a>
+                <a href="#right-now">Right Now</a>
+                <a href="#experiences">Experiences</a>
+                <a href="#events">Events</a>
+
+            </div>
+
+
+            <div class="nav-actions">
+
+                <button
+                    class="search-btn"
+                    id="searchBtn"
+                    aria-label="Search"
+                >
+                    <span>⌕</span>
+                    <small>Search</small>
+                </button>
+
+
+                <button
+                    class="vibe-nav-btn"
+                    onclick="scrollToSection('vibe')"
+                >
+                    Find my vibe
+                    <span>↗</span>
+                </button>
+
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open menu"
+                >
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- MOBILE MENU -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="#explore">
+                Explore
+                <span>↗</span>
+            </a>
+
+            <a href="#right-now">
+                Right Now
+                <span>↗</span>
+            </a>
+
+            <a href="#experiences">
+                Experiences
+                <span>↗</span>
+            </a>
+
+            <a href="#events">
+                Events
+                <span>↗</span>
+            </a>
+
+            <a href="#vibe">
+                Vibe Finder
+                <span>↗</span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="hero-image"></div>
+
+            <div class="hero-overlay"></div>
+
+
+            <div class="hero-content">
+
+                <div class="hero-location reveal">
+
+                    <span></span>
+
+                    NAGPUR · MAHARASHTRA
+
+                </div>
+
+
+                <h1 class="hero-title reveal">
+
+                    <span>NAGPUR,</span>
+
+                    <span class="faded">
+                        RIGHT NOW.
+                    </span>
+
+                </h1>
+
+
+                <div class="hero-bottom reveal">
+
+                    <p>
+
+                        Your city.
+                        Your vibe.
+                        Your next plan.
+
+                        <br><br>
+
+                        Discover places, experiences,
+                        events and hidden corners
+                        worth exploring.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="btn btn-white"
+                            onclick="scrollToSection('explore')"
+                        >
+                            Explore Nagpur
+                            <span>↘</span>
+                        </button>
+
+
+                        <button
+                            class="btn btn-glass"
+                            onclick="scrollToSection('vibe')"
+                        >
+                            ✦ Find my vibe
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-footer">
+
+                <span>SCROLL TO EXPLORE</span>
+
+                <span>EST. 2026</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MARQUEE ================= -->
+
+        <div class="marquee">
+
+            <div class="marquee-track">
+
+                <span>CAFÉS</span>
+                <i>✦</i>
+
+                <span>FOOD</span>
+                <i>✦</i>
+
+                <span>EVENTS</span>
+                <i>✦</i>
+
+                <span>EXPERIENCES</span>
+                <i>✦</i>
+
+                <span>HIDDEN GEMS</span>
+                <i>✦</i>
+
+                <span>NIGHTLIFE</span>
+                <i>✦</i>
+
+                <span>LOCAL CULTURE</span>
+                <i>✦</i>
+
+                <span>CAFÉS</span>
+                <i>✦</i>
+
+                <span>FOOD</span>
+                <i>✦</i>
+
+                <span>EVENTS</span>
+                <i>✦</i>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RIGHT NOW ================= -->
+
+        <section
+            class="section"
+            id="right-now"
+        >
+
+            <div class="container">
+
+                <div class="section-header reveal">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            01 — RIGHT NOW
+                        </div>
+
+                        <h2>
+                            What's<br>
+                            happening.
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        Don't plan for next week.
+                        Find something worth doing
+                        <strong>right now.</strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="live-grid">
+
+
+                    <article class="live-card big reveal">
+
+                        <div class="live-photo live-one">
+
+                            <span class="live-pill">
+                                <i></i>
+                                LIVE NOW
+                            </span>
+
+                            <span class="photo-time">
+                                Until 11:30 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="card-info">
+
+                            <div>
+
+                                <small>MUSIC</small>
+
+                                <h3>Live Music</h3>
+
+                                <p>
+                                    Civil Lines · 2.1 km
+                                </p>
+
+                            </div>
+
+                            <button class="circle-btn">
+                                ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="live-card reveal">
+
+                        <div class="live-photo live-two">
+
+                            <span class="live-pill green">
+                                <i></i>
+                                OPEN NOW
+                            </span>
+
+                        </div>
+
+
+                        <div class="card-info">
+
+                            <div>
+
+                                <small>CAFÉ</small>
+
+                                <h3>Slow Coffee</h3>
+
+                                <p>
+                                    Dharampeth · 3.4 km
+                                </p>
+
+                            </div>
+
+                            <button class="circle-btn">
+                                ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="live-card reveal">
+
+                        <div class="live-photo live-three">
+
+                            <span class="live-pill green">
+                                <i></i>
+                                STARTS SOON
+                            </span>
+
+                        </div>
+
+
+                        <div class="card-info">
+
+                            <div>
+
+                                <small>FOOD</small>
+
+                                <h3>Street Food Walk</h3>
+
+                                <p>
+                                    Sadar · 4.2 km
+                                </p>
+
+                            </div>
+
+                            <button class="circle-btn">
+                                ↗
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EXPLORE ================= -->
+
+        <!-- ================= EXPLORE NAGPUR ================= -->
+
+<section
+    class="section explore-section"
+    id="explore"
+>
+
+    <div class="container">
+
+        <div class="eyebrow reveal">
+            02 — EXPLORE NAGPUR
+        </div>
+
+
+        <div class="explore-heading">
+
+            <div>
+
+                <h2 class="reveal">
+                    Find your<br>
+                    next place.
+                </h2>
+
+            </div>
+
+
+            <p class="reveal">
+
+                Cafés, food, experiences, hidden
+                corners and everything in between.
+
+                <br><br>
+
+                <strong>
+                    Where do you want to go?
+                </strong>
+
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="explore-search reveal">
+
+            <span>⌕</span>
+
+            <input
+                type="text"
+                id="exploreSearch"
+                placeholder="Search cafés, food, places..."
+                autocomplete="off"
+            >
+
+            <kbd>/</kbd>
+
+        </div>
+
+
+        <!-- CATEGORY FILTERS -->
+
+        <div class="explore-filters reveal">
+
+            <button
+                class="filter-btn active"
+                data-category="all"
+            >
+                All
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="cafe"
+            >
+                ☕ Cafés
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="food"
+            >
+                ◉ Food
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="fun"
+            >
+                ✦ Fun
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="outdoors"
+            >
+                ◌ Outdoors
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="culture"
+            >
+                ✺ Culture
+            </button>
+
+            <button
+                class="filter-btn"
+                data-category="nightlife"
+            >
+                ◐ Nightlife
+            </button>
+
+        </div>
+
+
+        <!-- AREA FILTER -->
+
+        <div class="area-filter reveal">
+
+            <span>
+                NEAR
+            </span>
+
+            <select id="areaFilter">
+
+                <option value="all">
+                    Anywhere in Nagpur
+                </option>
+
+                <option value="dharampeth">
+                    Dharampeth
+                </option>
+
+                <option value="sadar">
+                    Sadar
+                </option>
+
+                <option value="civil-lines">
+                    Civil Lines
+                </option>
+
+                <option value="sitabuldi">
+                    Sitabuldi
+                </option>
+
+                <option value="manish-nagar">
+                    Manish Nagar
+                </option>
+
+                <option value="wardha-road">
+                    Wardha Road
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- RESULTS HEADER -->
+
+        <div class="results-header">
+
+            <div>
+
+                <span class="results-count">
+                    <strong id="resultCount">8</strong>
+                    PLACES
+                </span>
+
+            </div>
+
+
+            <button
+                class="sort-btn"
+                id="sortBtn"
+            >
+                Featured
+                <span>↕</span>
+            </button>
+
+        </div>
+
+
+        <!-- PLACE GRID -->
+
+        <div
+            class="places-grid"
+            id="placesGrid"
+        >
+
+
+            <!-- PLACE 01 -->
+
+            <article
+                class="place-card"
+                data-category="cafe"
+                data-area="dharampeth"
+                data-name="Slow Coffee"
+                data-rating="4.7"
+            >
+
+                <div class="place-image place-one">
+
+                    <span class="place-badge">
+                        ✦ TRENDING
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'Slow Coffee')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        01
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            CAFÉ
+                        </small>
+
+                        <h3>
+                            Slow Coffee
+                        </h3>
+
+                        <p>
+                            Dharampeth · ₹₹ · ⭐ 4.7
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('Slow Coffee')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLACE 02 -->
+
+            <article
+                class="place-card"
+                data-category="food"
+                data-area="sadar"
+                data-name="The Food Trail"
+                data-rating="4.8"
+            >
+
+                <div class="place-image place-two">
+
+                    <span class="place-badge">
+                        LOCAL FAVOURITE
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'The Food Trail')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        02
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            FOOD
+                        </small>
+
+                        <h3>
+                            The Food Trail
+                        </h3>
+
+                        <p>
+                            Sadar · ₹ · ⭐ 4.8
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('The Food Trail')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLACE 03 -->
+
+            <article
+                class="place-card"
+                data-category="fun"
+                data-area="wardha-road"
+                data-name="Weekend Energy"
+                data-rating="4.6"
+            >
+
+                <div class="place-image place-three">
+
+                    <span class="place-badge">
+                        NEW
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'Weekend Energy')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        03
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            FUN
+                        </small>
+
+                        <h3>
+                            Weekend Energy
+                        </h3>
+
+                        <p>
+                            Wardha Road · ₹₹ · ⭐ 4.6
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('Weekend Energy')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLACE 04 -->
+
+            <article
+                class="place-card"
+                data-category="outdoors"
+                data-area="civil-lines"
+                data-name="Green Escape"
+                data-rating="4.5"
+            >
+
+                <div class="place-image place-four">
+
+                    <span class="place-badge">
+                        HIDDEN
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'Green Escape')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        04
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            OUTDOORS
+                        </small>
+
+                        <h3>
+                            Green Escape
+                        </h3>
+
+                        <p>
+                            Civil Lines · Free · ⭐ 4.5
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('Green Escape')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLACE 05 -->
+
+            <article
+                class="place-card"
+                data-category="culture"
+                data-area="sitabuldi"
+                data-name="The Art Room"
+                data-rating="4.9"
+            >
+
+                <div class="place-image place-five">
+
+                    <span class="place-badge">
+                        EDITOR'S PICK
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'The Art Room')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        05
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            CULTURE
+                        </small>
+
+                        <h3>
+                            The Art Room
+                        </h3>
+
+                        <p>
+                            Sitabuldi · ₹₹ · ⭐ 4.9
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('The Art Room')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLACE 06 -->
+
+            <article
+                class="place-card"
+                data-category="nightlife"
+                data-area="dharampeth"
+                data-name="After Dark"
+                data-rating="4.6"
+            >
+
+                <div class="place-image place-six">
+
+                    <span class="place-badge">
+                        TONIGHT
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'After Dark')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        06
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            NIGHTLIFE
+                        </small>
+
+                        <h3>
+                            After Dark
+                        </h3>
+
+                        <p>
+                            Dharampeth · ₹₹₹ · ⭐ 4.6
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('After Dark')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLACE 07 -->
+
+            <article
+                class="place-card"
+                data-category="food"
+                data-area="manish-nagar"
+                data-name="Orange Kitchen"
+                data-rating="4.7"
+            >
+
+                <div class="place-image place-seven">
+
+                    <span class="place-badge">
+                        NAGPUR PICK
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'Orange Kitchen')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        07
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            FOOD
+                        </small>
+
+                        <h3>
+                            Orange Kitchen
+                        </h3>
+
+                        <p>
+                            Manish Nagar · ₹₹ · ⭐ 4.7
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('Orange Kitchen')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLACE 08 -->
+
+            <article
+                class="place-card"
+                data-category="cafe"
+                data-area="civil-lines"
+                data-name="Sunday Stories"
+                data-rating="4.8"
+            >
+
+                <div class="place-image place-eight">
+
+                    <span class="place-badge">
+                        AESTHETIC
+                    </span>
+
+                    <button
+                        class="place-save"
+                        onclick="savePlace(this,event,'Sunday Stories')"
+                    >
+                        ♡
+                    </button>
+
+                    <span class="place-number">
+                        08
+                    </span>
+
+                </div>
+
+
+                <div class="place-content">
+
+                    <div>
+
+                        <small>
+                            CAFÉ
+                        </small>
+
+                        <h3>
+                            Sunday Stories
+                        </h3>
+
+                        <p>
+                            Civil Lines · ₹₹ · ⭐ 4.8
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="place-arrow"
+                        onclick="openPlace('Sunday Stories')"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- EMPTY STATE -->
+
+        <div
+            class="places-empty"
+            id="placesEmpty"
+        >
+
+            <div>
+                ?
+            </div>
+
+            <h3>
+                Nothing found.
+            </h3>
+
+            <p>
+                Try another category,
+                area or search.
+            </p>
+
+            <button
+                onclick="resetExplore()"
+            >
+                Reset filters ↗
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+        <!-- ================= EXPERIENCES ================= -->
+
+        <section
+            class="section"
+            id="experiences"
+        >
+
+            <div class="container">
+
+                <div class="section-header reveal">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            03 — TRENDING
+                        </div>
+
+                        <h2>
+                            Worth<br>
+                            going to.
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        class="outline-btn"
+                        onclick="showToast('More experiences coming soon ✦')"
+                    >
+                        Explore all ↗
+                    </button>
+
+                </div>
+
+
+                <div class="experience-grid">
+
+
+                    <article class="experience-card reveal">
+
+                        <div class="experience-image exp-one">
+
+                            <button
+                                class="save-btn"
+                                onclick="toggleSave(this,event)"
+                            >
+                                ♡
+                            </button>
+
+                            <span class="image-number">
+                                01
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-info">
+
+                            <div>
+
+                                <small>CAFÉ</small>
+
+                                <h3>
+                                    Slow Coffee
+                                </h3>
+
+                                <p>
+                                    Dharampeth · ₹₹ · ⭐ 4.7
+                                </p>
+
+                            </div>
+
+                            <div class="tags">
+
+                                <span>Chill</span>
+                                <span>Aesthetic</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="experience-card reveal">
+
+                        <div class="experience-image exp-two">
+
+                            <button
+                                class="save-btn"
+                                onclick="toggleSave(this,event)"
+                            >
+                                ♡
+                            </button>
+
+                            <span class="image-number">
+                                02
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-info">
+
+                            <div>
+
+                                <small>FOOD</small>
+
+                                <h3>
+                                    The Food Trail
+                                </h3>
+
+                                <p>
+                                    Sadar · ₹ · ⭐ 4.8
+                                </p>
+
+                            </div>
+
+                            <div class="tags">
+
+                                <span>Foodie</span>
+                                <span>Local</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="experience-card reveal">
+
+                        <div class="experience-image exp-three">
+
+                            <button
+                                class="save-btn"
+                                onclick="toggleSave(this,event)"
+                            >
+                                ♡
+                            </button>
+
+                            <span class="image-number">
+                                03
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-info">
+
+                            <div>
+
+                                <small>EXPERIENCE</small>
+
+                                <h3>
+                                    Weekend Energy
+                                </h3>
+
+                                <p>
+                                    Nagpur · ₹₹ · ⭐ 4.6
+                                </p>
+
+                            </div>
+
+                            <div class="tags">
+
+                                <span>Hype</span>
+                                <span>Friends</span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= VIBE FINDER ================= -->
+
+        <section
+            class="section dark-section"
+            id="vibe"
+        >
+
+            <div class="container">
+
+                <div class="vibe-layout">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            04 — VIBE FINDER
+                        </div>
+
+                        <h2 class="reveal">
+                            Tell us<br>
+                            your mood.
+                        </h2>
+
+                        <p class="dark-text reveal">
+
+                            Don't know where to go?
+                            Pick a vibe and we'll point
+                            you somewhere interesting.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="vibe-box reveal">
+
+                        <h3>
+                            What's the mood?
+                        </h3>
+
+
+                        <div class="vibe-options">
+
+                            <button
+                                onclick="selectVibe(this,'Chill')"
+                            >
+                                😌 Chill
+                            </button>
+
+                            <button
+                                onclick="selectVibe(this,'Hype')"
+                            >
+                                🔥 Hype
+                            </button>
+
+                            <button
+                                onclick="selectVibe(this,'Date')"
+                            >
+                                ♥ Date
+                            </button>
+
+                            <button
+                                onclick="selectVibe(this,'Foodie')"
+                            >
+                                🍴 Foodie
+                            </button>
+
+                            <button
+                                onclick="selectVibe(this,'Adventure')"
+                            >
+                                ✦ Adventure
+                            </button>
+
+                            <button
+                                onclick="selectVibe(this,'Creative')"
+                            >
+                                ✎ Creative
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            class="find-vibe-btn"
+                            onclick="findVibe()"
+                        >
+                            Find my vibe
+                            <span>→</span>
+                        </button>
+
+
+                        <div
+                            class="vibe-result"
+                            id="vibeResult"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EVENTS ================= -->
+
+        <section
+            class="section dark-section events-section"
+            id="events"
+        >
+
+            <div class="container">
+
+                <div class="eyebrow">
+                    05 — WHAT'S ON
+                </div>
+
+                <h2 class="reveal">
+                    Something's<br>
+                    always happening.
+                </h2>
+
+
+                <div class="events-list">
+
+
+                    <article class="event reveal">
+
+                        <div class="event-date">
+                            <span>SEP</span>
+                            <strong>05</strong>
+                        </div>
+
+                        <div>
+
+                            <small>TECHNOLOGY</small>
+
+                            <h3>
+                                Vibe With AI
+                            </h3>
+
+                            <p>
+                                Nagpur · 6:00 PM
+                            </p>
+
+                        </div>
+
+                        <button
+                            onclick="showToast('Event details coming soon ✦')"
+                        >
+                            ↗
+                        </button>
+
+                    </article>
+
+
+                    <article class="event reveal">
+
+                        <div class="event-date">
+                            <span>SEP</span>
+                            <strong>06</strong>
+                        </div>
+
+                        <div>
+
+                            <small>MUSIC</small>
+
+                            <h3>
+                                Open Mic Night
+                            </h3>
+
+                            <p>
+                                Nagpur · 7:30 PM
+                            </p>
+
+                        </div>
+
+                        <button
+                            onclick="showToast('Event details coming soon ✦')"
+                        >
+                            ↗
+                        </button>
+
+                    </article>
+
+
+                    <article class="event reveal">
+
+                        <div class="event-date">
+                            <span>SEP</span>
+                            <strong>07</strong>
+                        </div>
+
+                        <div>
+
+                            <small>CULTURE</small>
+
+                            <h3>
+                                Art Weekend
+                            </h3>
+
+                            <p>
+                                Nagpur · 11:00 AM
+                            </p>
+
+                        </div>
+
+                        <button
+                            onclick="showToast('Event details coming soon ✦')"
+                        >
+                            ↗
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DEAL ================= -->
+
+        <section class="section deal-section">
+
+            <div class="container">
+
+                <div class="deal reveal">
+
+                    <div>
+
+                        <span>
+                            ✦ DEAL DROP · LIMITED
+                        </span>
+
+                        <h2>
+                            Weekend<br>
+                            Coffee Run.
+                        </h2>
+
+                        <p>
+                            A curated local experience
+                            waiting for you.
+                        </p>
+
+                    </div>
+
+
+                    <div class="deal-action">
+
+                        <div class="countdown">
+
+                            <small>
+                                DROP ENDS IN
+                            </small>
+
+                            <strong id="countdown">
+                                02:18:42
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            id="dealButton"
+                            onclick="claimDeal()"
+                        >
+                            Claim drop ↗
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HIDDEN NAGPUR ================= -->
+
+        <section class="section">
+
+            <div class="container">
+
+                <div class="hidden-layout">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            06 — HIDDEN NAGPUR
+                        </div>
+
+                        <h2 class="reveal">
+                            There's more<br>
+                            to this city.
+                        </h2>
+
+                        <p class="section-copy reveal">
+
+                            The places everyone knows are easy.
+                            We're interested in the ones
+                            you haven't discovered yet.
+
+                        </p>
+
+
+                        <button
+                            class="dark-button"
+                            onclick="showToast('Hidden Nagpur is coming ✦')"
+                        >
+                            Discover the hidden ↗
+                        </button>
+
+                    </div>
+
+
+                    <div class="mystery-card reveal">
+
+                        <div class="mystery-image">
+
+                            <div class="mystery-lock">
+                                ?
+                            </div>
+
+                            <span>
+                                MYSTERY SPOT #014
+                            </span>
+
+                        </div>
+
+
+                        <div class="mystery-bottom">
+
+                            <span>
+                                Unlock to reveal
+                            </span>
+
+                            <span>
+                                +150 XP
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EXPERIENCE BUILDER ================= -->
+
+        <section class="section planner-section">
+
+            <div class="container">
+
+                <div class="planner reveal">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            07 — EXPERIENCE BUILDER
+                        </div>
+
+                        <h2>
+                            Don't know<br>
+                            what to do?
+                        </h2>
+
+                        <p>
+                            Tell us your time, budget,
+                            people and mood.
+                            We'll help build the plan.
+                        </p>
+
+
+                        <button
+                            class="light-button"
+                            onclick="showToast('Experience Builder coming next ✦')"
+                        >
+                            Build my plan →
+                        </button>
+
+                    </div>
+
+
+                    <div class="timeline">
+
+                        <div class="timeline-item">
+
+                            <span>05:00 PM</span>
+
+                            <div>
+                                <strong>☕ Café</strong>
+                                <small>₹180</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-item">
+
+                            <span>07:00 PM</span>
+
+                            <div>
+                                <strong>🎮 Activity</strong>
+                                <small>₹220</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-item">
+
+                            <span>09:00 PM</span>
+
+                            <div>
+                                <strong>🍔 Food</strong>
+                                <small>₹180</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-total">
+
+                            <span>TOTAL</span>
+
+                            <strong>₹580</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-top">
+
+                <div>
+
+                    <div class="footer-logo">
+                        NAGPUR<span>NOW</span>
+                    </div>
+
+                    <p>
+                        Your city. Your vibe.
+                        Your next plan.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <div>
+
+                        <small>EXPLORE</small>
+
+                        <a href="#explore">Places</a>
+                        <a href="#events">Events</a>
+                        <a href="#vibe">Vibe Finder</a>
+                        <a href="#">Deals</a>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>NAGPUR NOW</small>
+
+                        <a href="#">About</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Instagram</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Nagpur Now
+                </span>
+
+                <span>
+                    MADE FOR THE CITY ✦
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <div
+        class="search-overlay"
+        id="searchOverlay"
+    >
+
+        <button
+            class="search-close"
+            id="searchClose"
+        >
+            ×
+        </button>
+
+
+        <div class="search-container">
+
+            <small>
+                SEARCH NAGPUR
+            </small>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Try cafés, food, events..."
+                autocomplete="off"
+            >
+
+            <div
+                class="search-results"
+                id="searchResults"
+            >
+                Start typing to explore.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        <span>✦</span>
+        <p id="toastMessage"></p>
+    </div>
+
+
+    <script src="js/app.js"></script>
+    <!-- MOBILE BOTTOM NAV -->
+
+<nav class="mobile-bottom-nav">
+
+    <button onclick="scrollToSection('explore')">
+        <span>⌂</span>
+        <small>Explore</small>
+    </button>
+
+    <button onclick="openMobileSearch()">
+        <span>⌕</span>
+        <small>Search</small>
+    </button>
+
+    <button onclick="showToast('Your saved places will appear here ✦')">
+        <span>♡</span>
+        <small>Saved</small>
+    </button>
+
+    <button onclick="toggleMobileMenu()">
+        <span>☰</span>
+        <small>Menu</small>
+    </button>
+
+</nav>
+
+</body>
+
+</html>
