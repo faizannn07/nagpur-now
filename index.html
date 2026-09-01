@@ -1931,6 +1931,131 @@
 
 </nav>
 
+
+
+<!-- ================= PLACE PREVIEW ================= -->
+
+<div class="place-modal" id="placeModal">
+
+    <div
+        class="place-modal-backdrop"
+        onclick="closePlace()"
+    ></div>
+
+    <div class="place-sheet">
+
+        <button
+            class="place-modal-close"
+            onclick="closePlace()"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <div
+            class="place-modal-image"
+            id="placeModalImage"
+        ></div>
+
+        <div class="place-modal-content">
+
+            <div class="place-modal-top">
+
+                <div>
+
+                    <span
+                        class="place-modal-category"
+                        id="placeModalCategory"
+                    >
+                        CAFÉ
+                    </span>
+
+                    <h2 id="placeModalName">
+                        Slow Coffee
+                    </h2>
+
+                    <p id="placeModalLocation">
+                        Dharampeth · ₹₹
+                    </p>
+
+                </div>
+
+                <div
+                    class="place-modal-rating"
+                    id="placeModalRating"
+                >
+                    ★ 4.7
+                </div>
+
+            </div>
+
+
+            <p
+                class="place-modal-description"
+                id="placeModalDescription"
+            >
+                A relaxed place to slow down, grab good coffee
+                and spend a little longer than planned.
+            </p>
+
+
+            <div class="place-modal-actions">
+
+                <button
+                    class="place-action primary"
+                    id="placeSaveAction"
+                    onclick="saveCurrentPlace()"
+                >
+                    ♡ Save
+                </button>
+
+                <button
+                    class="place-action"
+                    onclick="openDirections()"
+                >
+                    ↗ Directions
+                </button>
+
+                <button
+                    class="place-action"
+                    onclick="shareCurrentPlace()"
+                >
+                    ↗ Share
+                </button>
+
+            </div>
+
+
+            <div class="place-modal-meta">
+
+                <div>
+                    <small>GOOD FOR</small>
+
+                    <strong id="placeModalGoodFor">
+                        Coffee · Chill · Friends
+                    </strong>
+                </div>
+
+                <div>
+                    <small>AREA</small>
+
+                    <strong id="placeModalArea">
+                        Dharampeth
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
 </body>
 
 </html>

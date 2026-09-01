@@ -920,15 +920,332 @@ function savePlace(
 }
 
 
-/* ================= OPEN PLACE ================= */
+/* ================= PLACE PREVIEW ================= */
+
+const placeData = {
+
+    "Slow Coffee": {
+        category: "CAFÉ",
+        location: "Dharampeth · ₹₹",
+        rating: "4.7",
+        area: "Dharampeth",
+        goodFor: "Coffee · Chill · Friends",
+        description:
+            "A relaxed coffee spot for slow mornings, conversations and plans that were supposed to last an hour.",
+        image:
+            "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=90"
+    },
+
+    "The Food Trail": {
+        category: "FOOD",
+        location: "Sadar · ₹",
+        rating: "4.8",
+        area: "Sadar",
+        goodFor: "Food · Friends · Exploring",
+        description:
+            "A food-first stop for discovering something delicious when you don't want the usual plan.",
+        image:
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=90"
+    },
+
+    "Weekend Energy": {
+        category: "FUN",
+        location: "Wardha Road · ₹₹",
+        rating: "4.6",
+        area: "Wardha Road",
+        goodFor: "Friends · Weekend · Fun",
+        description:
+            "For the days when sitting at home isn't an option. Find something different and make the weekend count.",
+        image:
+            "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1400&q=90"
+    },
+
+    "Green Escape": {
+        category: "OUTDOORS",
+        location: "Civil Lines · Free",
+        rating: "4.5",
+        area: "Civil Lines",
+        goodFor: "Walks · Nature · Chill",
+        description:
+            "A quieter side of Nagpur for fresh air, slow walks and getting away from the noise.",
+        image:
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=90"
+    },
+
+    "The Art Room": {
+        category: "CULTURE",
+        location: "Sitabuldi · ₹₹",
+        rating: "4.9",
+        area: "Sitabuldi",
+        goodFor: "Art · Creative · Culture",
+        description:
+            "A creative corner for people who want to discover local talent and get inspired.",
+        image:
+            "https://images.unsplash.com/photo-1577083552431-6e5fd01988b5?auto=format&fit=crop&w=1400&q=90"
+    },
+
+    "After Dark": {
+        category: "NIGHTLIFE",
+        location: "Dharampeth · ₹₹₹",
+        rating: "4.6",
+        area: "Dharampeth",
+        goodFor: "Night · Music · Friends",
+        description:
+            "When the city switches moods. Music, conversations and a reason to stay out a little longer.",
+        image:
+            "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1400&q=90"
+    },
+
+    "Orange Kitchen": {
+        category: "FOOD",
+        location: "Manish Nagar · ₹₹",
+        rating: "4.7",
+        area: "Manish Nagar",
+        goodFor: "Dinner · Food · Friends",
+        description:
+            "A casual food stop when you're looking for a satisfying meal without overthinking the plan.",
+        image:
+            "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=90"
+    },
+
+    "Sunday Stories": {
+        category: "CAFÉ",
+        location: "Civil Lines · ₹₹",
+        rating: "4.8",
+        area: "Civil Lines",
+        goodFor: "Brunch · Coffee · Aesthetic",
+        description:
+            "A slow Sunday kind of place — coffee, conversations and nowhere else you need to be.",
+        image:
+            "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1400&q=90"
+    }
+
+};
+
+
+let currentPlace = null;
+
 
 function openPlace(placeName) {
 
-    showToast(
-        `${placeName} — place page coming next ✦`
+    const place = placeData[placeName];
+
+    if (!place) {
+        showToast(
+            `${placeName} information coming soon ✦`
+        );
+        return;
+    }
+
+    currentPlace = placeName;
+
+    const modal =
+        document.getElementById("placeModal");
+
+    document.getElementById(
+        "placeModalImage"
+    ).style.backgroundImage =
+        `url("${place.image}")`;
+
+    document.getElementById(
+        "placeModalCategory"
+    ).textContent =
+        place.category;
+
+    document.getElementById(
+        "placeModalName"
+    ).textContent =
+        placeName;
+
+    document.getElementById(
+        "placeModalLocation"
+    ).textContent =
+        place.location;
+
+    document.getElementById(
+        "placeModalRating"
+    ).textContent =
+        `★ ${place.rating}`;
+
+    document.getElementById(
+        "placeModalDescription"
+    ).textContent =
+        place.description;
+
+    document.getElementById(
+        "placeModalGoodFor"
+    ).textContent =
+        place.goodFor;
+
+    document.getElementById(
+        "placeModalArea"
+    ).textContent =
+        place.area;
+
+    updatePlaceSaveButton();
+
+    modal.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closePlace() {
+
+    const modal =
+        document.getElementById("placeModal");
+
+    modal.classList.remove("open");
+
+    document.body.style.overflow = "";
+}
+
+
+function updatePlaceSaveButton() {
+
+    const button =
+        document.getElementById(
+            "placeSaveAction"
+        );
+
+    if (!button || !currentPlace) return;
+
+    const savedPlaces =
+        JSON.parse(
+            localStorage.getItem(
+                "nagpurNowSaved"
+            ) || "[]"
+        );
+
+    const saved =
+        savedPlaces.includes(currentPlace);
+
+    button.textContent =
+        saved ? "♥ Saved" : "♡ Save";
+
+    button.classList.toggle(
+        "primary",
+        !saved
+    );
+}
+
+
+function saveCurrentPlace() {
+
+    if (!currentPlace) return;
+
+    let savedPlaces =
+        JSON.parse(
+            localStorage.getItem(
+                "nagpurNowSaved"
+            ) || "[]"
+        );
+
+    if (
+        savedPlaces.includes(currentPlace)
+    ) {
+
+        savedPlaces =
+            savedPlaces.filter(
+                place =>
+                    place !== currentPlace
+            );
+
+        showToast(
+            `${currentPlace} removed from My Nagpur`
+        );
+
+    } else {
+
+        savedPlaces.push(currentPlace);
+
+        showToast(
+            `${currentPlace} saved to My Nagpur`
+        );
+    }
+
+    localStorage.setItem(
+        "nagpurNowSaved",
+        JSON.stringify(savedPlaces)
     );
 
+    updatePlaceSaveButton();
 }
+
+
+function openDirections() {
+
+    if (!currentPlace) return;
+
+    const place =
+        placeData[currentPlace];
+
+    const query =
+        encodeURIComponent(
+            `${currentPlace}, ${place.area}, Nagpur`
+        );
+
+    window.open(
+        `https://www.google.com/maps/search/?api=1&query=${query}`,
+        "_blank"
+    );
+}
+
+
+async function shareCurrentPlace() {
+
+    if (!currentPlace) return;
+
+    const shareText =
+        `${currentPlace} — found on Nagpur Now ✦`;
+
+    if (navigator.share) {
+
+        try {
+
+            await navigator.share({
+                title: currentPlace,
+                text: shareText,
+                url: window.location.href
+            });
+
+        } catch (error) {
+            // User cancelled sharing.
+        }
+
+    } else {
+
+        try {
+
+            await navigator.clipboard.writeText(
+                window.location.href
+            );
+
+            showToast("Link copied ✦");
+
+        } catch (error) {
+
+            showToast(
+                "Share Nagpur Now with your friends ✦"
+            );
+
+        }
+    }
+}
+
+
+/* ================= CLOSE PLACE ================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+            closePlace();
+        }
+
+    }
+);
 
 
 /* ================= RESET ================= */
