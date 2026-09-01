@@ -1389,3 +1389,869 @@ function toggleMobileMenu() {
         menuBtn.click();
     }
 }
+/* =========================================================
+   LATEST UPDATES — CITY FEED
+   ========================================================= */
+
+const latestUpdates = [
+
+    {
+        id: "nagpur-update-01",
+        name: "Nagpur Food & Street Food Trail",
+        category: "FOOD",
+        area: "sadar",
+        areaName: "Sadar",
+        date: "2026-09-02",
+        time: "19:00",
+        price: "₹299",
+        type: "food",
+        description:
+            "A casual food discovery experience covering local flavours, street food and underrated Nagpur bites.",
+        image:
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+    },
+
+    {
+        id: "nagpur-update-02",
+        name: "Live Music Evening",
+        category: "MUSIC",
+        area: "dharampeth",
+        areaName: "Dharampeth",
+        date: "2026-09-02",
+        time: "20:00",
+        price: "₹499",
+        type: "music",
+        description:
+            "Live music, relaxed atmosphere and a night out in one of Nagpur's popular neighbourhoods.",
+        image:
+            "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80"
+    },
+
+    {
+        id: "nagpur-update-03",
+        name: "Photography Exhibition",
+        category: "CULTURE",
+        area: "civil-lines",
+        areaName: "Civil Lines",
+        date: "2026-09-03",
+        time: "11:00",
+        price: "FREE",
+        type: "culture",
+        description:
+            "Explore photography, visual storytelling and local creative work.",
+        image:
+            "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80"
+    },
+
+    {
+        id: "nagpur-update-04",
+        name: "Creative Workshop",
+        category: "WORKSHOP",
+        area: "sitabuldi",
+        areaName: "Sitabuldi",
+        date: "2026-09-04",
+        time: "17:30",
+        price: "₹399",
+        type: "creative",
+        description:
+            "A hands-on creative session for anyone looking to learn something new and meet people.",
+        image:
+            "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=80"
+    },
+
+    {
+        id: "nagpur-update-05",
+        name: "Sunset at Ambazari",
+        category: "OUTDOORS",
+        area: "ambazari",
+        areaName: "Ambazari",
+        date: "2026-09-03",
+        time: "18:15",
+        price: "FREE",
+        type: "outdoors",
+        description:
+            "A simple Nagpur evening plan: sunset, open space, fresh air and a slow walk.",
+        image:
+            "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80"
+    },
+
+    {
+        id: "nagpur-update-06",
+        name: "Startup & Founders Meetup",
+        category: "COMMUNITY",
+        area: "wardha-road",
+        areaName: "Wardha Road",
+        date: "2026-09-05",
+        time: "16:00",
+        price: "FREE",
+        type: "community",
+        description:
+            "Meet founders, creators, students and people building interesting things around Nagpur.",
+        image:
+            "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80"
+    },
+
+    {
+        id: "nagpur-update-07",
+        name: "Ramtek Day Escape",
+        category: "ESCAPE",
+        area: "ramtek",
+        areaName: "Ramtek",
+        date: "2026-09-06",
+        time: "07:00",
+        price: "₹799",
+        type: "escape",
+        description:
+            "A day outside the city exploring Ramtek, viewpoints, history and nearby nature.",
+        image:
+            "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80"
+    },
+
+    {
+        id: "nagpur-update-08",
+        name: "Open Mic Night",
+        category: "NIGHTLIFE",
+        area: "dharampeth",
+        areaName: "Dharampeth",
+        date: "2026-09-06",
+        time: "19:30",
+        price: "₹199",
+        type: "nightlife",
+        description:
+            "Comedy, poetry, music and spontaneous performances in a relaxed open-mic setting.",
+        image:
+            "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=80"
+    }
+
+];
+
+
+let latestActiveFilter = "all";
+let latestActiveArea = "all";
+let currentUpdate = null;
+
+
+/* DATE HELPERS */
+
+function getUpdateDate(update) {
+
+    return new Date(
+        `${update.date}T${update.time}:00`
+    );
+
+}
+
+
+function getUpdateStatus(update) {
+
+    const now = new Date();
+    const eventDate = getUpdateDate(update);
+
+    const diff =
+        eventDate.getTime() -
+        now.getTime();
+
+    const oneHour =
+        60 * 60 * 1000;
+
+    const oneDay =
+        24 * oneHour;
+
+    const today =
+        now.toDateString() ===
+        eventDate.toDateString();
+
+    if (
+        today &&
+        diff <= 0 &&
+        diff >= -4 * oneHour
+    ) {
+        return {
+            key: "now",
+            label: "Happening Now"
+        };
+    }
+
+    if (
+        diff > 0 &&
+        diff <= oneHour
+    ) {
+        return {
+            key: "now",
+            label: "Starting Soon"
+        };
+    }
+
+    if (today) {
+        return {
+            key: "tonight",
+            label: "Tonight"
+        };
+    }
+
+    if (diff > 0 && diff <= oneDay * 2) {
+        return {
+            key: "tomorrow",
+            label: "Tomorrow"
+        };
+    }
+
+    const day =
+        eventDate.getDay();
+
+    if (
+        day === 5 ||
+        day === 6 ||
+        day === 0
+    ) {
+        return {
+            key: "weekend",
+            label: "This Weekend"
+        };
+    }
+
+    return {
+        key: "upcoming",
+        label: "Upcoming"
+    };
+
+}
+
+
+/* FORMAT */
+
+function formatUpdateTime(update) {
+
+    const date =
+        getUpdateDate(update);
+
+    return date.toLocaleTimeString(
+        [],
+        {
+            hour: "numeric",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+function formatUpdateDate(update) {
+
+    const date =
+        getUpdateDate(update);
+
+    return date.toLocaleDateString(
+        [],
+        {
+            day: "numeric",
+            month: "short"
+        }
+    );
+
+}
+
+
+/* RENDER */
+
+function renderLatestUpdates() {
+
+    const grid =
+        document.getElementById(
+            "latestUpdatesGrid"
+        );
+
+    const empty =
+        document.getElementById(
+            "latestEmpty"
+        );
+
+    const count =
+        document.getElementById(
+            "latestCount"
+        );
+
+    if (!grid) return;
+
+
+    const filtered =
+        latestUpdates
+            .filter(update => {
+
+                const status =
+                    getUpdateStatus(update);
+
+                const filterMatch =
+                    latestActiveFilter === "all" ||
+                    (
+                        latestActiveFilter ===
+                        status.key
+                    ) ||
+                    (
+                        latestActiveFilter ===
+                        "free" &&
+                        update.price === "FREE"
+                    );
+
+                const areaMatch =
+                    latestActiveArea === "all" ||
+                    update.area === latestActiveArea;
+
+                return filterMatch && areaMatch;
+
+            })
+            .sort(
+                (a,b) =>
+                    getUpdateDate(a) -
+                    getUpdateDate(b)
+            );
+
+
+    grid.innerHTML = "";
+
+
+    filtered.forEach(update => {
+
+        const status =
+            getUpdateStatus(update);
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "latest-card";
+
+
+        card.innerHTML = `
+
+            <div
+                class="latest-card-image"
+                style="
+                    background-image:
+                    url('${update.image}')
+                "
+            ></div>
+
+            <div
+                class="latest-card-overlay"
+            ></div>
+
+
+            <div class="latest-card-top">
+
+                <span class="latest-status">
+
+                    <span
+                        class="latest-status-dot"
+                    ></span>
+
+                    ${status.label}
+
+                </span>
+
+
+                <button
+                    class="latest-save"
+                    onclick="
+                        toggleLatestSave(
+                            this,
+                            event,
+                            '${update.id}'
+                        )
+                    "
+                    aria-label="Save"
+                >
+                    ♡
+                </button>
+
+            </div>
+
+
+            <div class="latest-card-bottom">
+
+                <span class="latest-category">
+                    ${update.category}
+                </span>
+
+                <h3>
+                    ${update.name}
+                </h3>
+
+                <div class="latest-card-info">
+
+                    <span>
+                        📍 ${update.areaName}
+                    </span>
+
+                    <span>
+                        ◷ ${formatUpdateTime(update)}
+                    </span>
+
+                    <span>
+                        ${update.price}
+                    </span>
+
+                </div>
+
+                <div class="latest-arrow">
+                    ↗
+                </div>
+
+            </div>
+
+        `;
+
+
+        card.addEventListener(
+            "click",
+            () => openUpdate(update.id)
+        );
+
+
+        grid.appendChild(card);
+
+    });
+
+
+    if (filtered.length === 0) {
+
+        empty.classList.add("show");
+
+    } else {
+
+        empty.classList.remove("show");
+
+    }
+
+
+    if (count) {
+
+        count.textContent =
+            `${filtered.length} ${
+                filtered.length === 1
+                    ? "update"
+                    : "updates"
+            }`;
+
+    }
+
+}
+
+
+/* FILTERS */
+
+document
+    .querySelectorAll(".latest-filter")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .querySelectorAll(
+                        ".latest-filter"
+                    )
+                    .forEach(item =>
+                        item.classList.remove(
+                            "active"
+                        )
+                    );
+
+                button.classList.add("active");
+
+                latestActiveFilter =
+                    button.dataset.updateFilter;
+
+                renderLatestUpdates();
+
+            }
+        );
+
+    });
+
+
+const latestAreaFilter =
+    document.getElementById(
+        "latestAreaFilter"
+    );
+
+
+if (latestAreaFilter) {
+
+    latestAreaFilter.addEventListener(
+        "change",
+        () => {
+
+            latestActiveArea =
+                latestAreaFilter.value;
+
+            renderLatestUpdates();
+
+        }
+    );
+
+}
+
+
+/* RESET */
+
+function resetLatestUpdates() {
+
+    latestActiveFilter = "all";
+    latestActiveArea = "all";
+
+
+    if (latestAreaFilter) {
+
+        latestAreaFilter.value = "all";
+
+    }
+
+
+    document
+        .querySelectorAll(".latest-filter")
+        .forEach(button =>
+            button.classList.remove("active")
+        );
+
+
+    const all =
+        document.querySelector(
+            '[data-update-filter="all"]'
+        );
+
+
+    if (all) {
+
+        all.classList.add("active");
+
+    }
+
+
+    renderLatestUpdates();
+
+}
+
+
+/* OPEN UPDATE */
+
+function openUpdate(id) {
+
+    const update =
+        latestUpdates.find(
+            item => item.id === id
+        );
+
+    if (!update) return;
+
+
+    currentUpdate = update;
+
+
+    const modal =
+        document.getElementById(
+            "updateModal"
+        );
+
+
+    document.getElementById(
+        "updateModalCategory"
+    ).textContent =
+        update.category;
+
+
+    document.getElementById(
+        "updateModalName"
+    ).textContent =
+        update.name;
+
+
+    document.getElementById(
+        "updateModalLocation"
+    ).textContent =
+        `📍 ${update.areaName} · ${
+            formatUpdateDate(update)
+        } · ${
+            formatUpdateTime(update)
+        } · ${update.price}`;
+
+
+    document.getElementById(
+        "updateModalDescription"
+    ).textContent =
+        update.description;
+
+
+    updateSaveButton();
+
+
+    modal.classList.add("open");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* CLOSE */
+
+function closeUpdate() {
+
+    const modal =
+        document.getElementById(
+            "updateModal"
+        );
+
+    if (!modal) return;
+
+    modal.classList.remove("open");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* SAVE */
+
+function toggleLatestSave(
+    button,
+    event,
+    id
+) {
+
+    event.stopPropagation();
+
+    button.classList.toggle("saved");
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "nagpurNowUpdates"
+            ) || "[]"
+        );
+
+
+    if (button.classList.contains("saved")) {
+
+        if (!saved.includes(id)) {
+
+            saved.push(id);
+
+        }
+
+        button.innerHTML = "♥";
+
+        showToast(
+            "Saved to My Nagpur"
+        );
+
+    } else {
+
+        const index =
+            saved.indexOf(id);
+
+        if (index !== -1) {
+
+            saved.splice(index, 1);
+
+        }
+
+        button.innerHTML = "♡";
+
+        showToast(
+            "Removed from My Nagpur"
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "nagpurNowUpdates",
+        JSON.stringify(saved)
+    );
+
+}
+
+
+function updateSaveButton() {
+
+    if (!currentUpdate) return;
+
+
+    const button =
+        document.getElementById(
+            "updateSaveButton"
+        );
+
+
+    if (!button) return;
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "nagpurNowUpdates"
+            ) || "[]"
+        );
+
+
+    if (
+        saved.includes(
+            currentUpdate.id
+        )
+    ) {
+
+        button.innerHTML =
+            "♥ Saved";
+
+    } else {
+
+        button.innerHTML =
+            "♡ Save";
+
+    }
+
+}
+
+
+function saveCurrentUpdate() {
+
+    if (!currentUpdate) return;
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "nagpurNowUpdates"
+            ) || "[]"
+        );
+
+
+    const index =
+        saved.indexOf(
+            currentUpdate.id
+        );
+
+
+    if (index === -1) {
+
+        saved.push(
+            currentUpdate.id
+        );
+
+        showToast(
+            "Saved to My Nagpur"
+        );
+
+    } else {
+
+        saved.splice(index, 1);
+
+        showToast(
+            "Removed from My Nagpur"
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "nagpurNowUpdates",
+        JSON.stringify(saved)
+    );
+
+
+    updateSaveButton();
+
+}
+
+
+/* DIRECTIONS */
+
+function openUpdateDirections() {
+
+    if (!currentUpdate) return;
+
+
+    const destination =
+        encodeURIComponent(
+            `${currentUpdate.name}, ${currentUpdate.areaName}, Nagpur`
+        );
+
+
+    window.open(
+        `https://www.google.com/maps/search/?api=1&query=${destination}`,
+        "_blank"
+    );
+
+}
+
+
+/* SHARE */
+
+function shareCurrentUpdate() {
+
+    if (!currentUpdate) return;
+
+
+    const text =
+        `${currentUpdate.name} — ${currentUpdate.areaName}`;
+
+
+    if (
+        navigator.share
+    ) {
+
+        navigator.share({
+            title:
+                currentUpdate.name,
+            text: text,
+            url:
+                window.location.href
+        });
+
+    } else {
+
+        navigator.clipboard.writeText(
+            `${text} — ${window.location.href}`
+        );
+
+        showToast(
+            "Link copied"
+        );
+
+    }
+
+}
+
+
+/* ESCAPE */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeUpdate();
+
+        }
+
+    }
+);
+
+
+/* INITIAL RENDER */
+
+renderLatestUpdates();
+
+
+/* REFRESH STATUS */
+
+setInterval(
+    renderLatestUpdates,
+    60 * 1000
+);

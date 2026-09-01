@@ -75,7 +75,7 @@
                 <a href="#explore">Explore</a>
                 <a href="#right-now">Right Now</a>
                 <a href="#experiences">Experiences</a>
-                <a href="#events">Events</a>
+                <a href="#latest">Latest</a>
 
             </div>
 
@@ -134,10 +134,10 @@
                 <span>↗</span>
             </a>
 
-            <a href="#events">
-                Events
-                <span>↗</span>
-            </a>
+         <a href="#latest">
+    Latest
+    <span>↗</span>
+</a>
 
             <a href="#vibe">
                 Vibe Finder
@@ -1435,6 +1435,7 @@
 
         </section>
 
+        
 
         <!-- ================= EVENTS ================= -->
 
@@ -2052,10 +2053,83 @@
 
 </div>
 
+<!-- ================= UPDATE DETAILS ================= -->
 
+<div
+    class="update-modal"
+    id="updateModal"
+>
+
+    <div
+        class="update-modal-backdrop"
+        onclick="closeUpdate()"
+    ></div>
+
+    <div class="update-sheet">
+
+        <button
+            class="update-close"
+            onclick="closeUpdate()"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <span
+            class="update-modal-category"
+            id="updateModalCategory"
+        >
+            EVENT
+        </span>
+
+        <h2 id="updateModalName">
+            Event name
+        </h2>
+
+        <div
+            class="update-modal-location"
+            id="updateModalLocation"
+        >
+            📍 Nagpur · 8:00 PM
+        </div>
+
+        <p
+            class="update-modal-description"
+            id="updateModalDescription"
+        >
+            Event details.
+        </p>
+
+        <div class="update-modal-actions">
+
+            <button
+                class="update-action primary"
+                id="updateSaveButton"
+                onclick="saveCurrentUpdate()"
+            >
+                ♡ Save
+            </button>
+
+            <button
+                class="update-action"
+                onclick="openUpdateDirections()"
+            >
+                ↗ Directions
+            </button>
+
+            <button
+                class="update-action"
+                onclick="shareCurrentUpdate()"
+            >
+                ↗ Share
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 
 </html>
-</body>
 
-</html>
