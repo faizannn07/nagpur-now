@@ -1376,3 +1376,16 @@ if (sortBtn) {
 /* ================= INITIAL FILTER ================= */
 
 filterPlaces();
+/* ================= MOBILE BOTTOM NAV ================= */
+
+function openMobileSearch() {
+    if (typeof searchBtn !== "undefined") {
+        searchBtn.click();
+    }
+}
+
+function toggleMobileMenu() {
+    if (typeof menuBtn !== "undefined") {
+        menuBtn.click();
+    }
+}
